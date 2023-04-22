@@ -24,3 +24,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+// Open AI key
+// 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
