@@ -9,8 +9,9 @@ import SwiftUI
 import OpenAISwift
 
 struct MainView: View {
-    @State private var chatQueryText: String = ""
-    
+    @State private var chatQueryText: String = "k"
+    // temp var
+    @State private var answers: [String] = []
     let openAI = OpenAISwift(authToken: "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")
     
     private var isFormValid: Bool {
@@ -22,6 +23,9 @@ struct MainView: View {
             switch result {
             case .success(let success):
                 print("success: \(success)")
+                let answer = success.choices?.first?.text.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                guard !answer.isEmpty else {return}
+                answers.append(answer)
             case .failure(let failure):
                 print("failure: \(failure)")
             }
