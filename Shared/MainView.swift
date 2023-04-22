@@ -9,6 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     @State private var chatQueryText: String = ""
+    
+    private var isFormValid: Bool {
+        !chatQueryText.isEmptyOrWhitespace
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -22,6 +27,7 @@ struct MainView: View {
                         .rotationEffect(Angle(degrees: 45))
                 }.buttonStyle(.borderless)
                     .tint(.blue)
+                    .disabled(!isFormValid)
                 // buttonStyle and tint for mac app
 
             }
