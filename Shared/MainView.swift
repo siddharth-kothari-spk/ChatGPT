@@ -25,7 +25,7 @@ struct MainView: View {
                 print("success: \(success)")
                 
                 let answer = success.choices?.first?.text.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-               // guard !answer.isEmpty else {return}
+                guard !answer.isEmpty else {return}
                 answers.append(answer)
             case .failure(let failure):
                 print("failure: \(failure)")
@@ -37,7 +37,7 @@ struct MainView: View {
         VStack {
             
             List(answers, id: \.self) { answer in
-                Text(answer).font(.title)
+                Text(answer)
             }
             
             Spacer()
