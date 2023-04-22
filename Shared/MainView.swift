@@ -12,7 +12,7 @@ struct MainView: View {
     @State private var chatQueryText: String = ""
     // temp var
     @State private var answers: [String] = []
-    let openAI = OpenAISwift(authToken: "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")
+    let openAI = OpenAISwift(authToken: Constants.openAIKey)
     
     private var isFormValid: Bool {
         !chatQueryText.isEmptyOrWhitespace
