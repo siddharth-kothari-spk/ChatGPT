@@ -25,6 +25,8 @@
 		1DDDED7629F3EBD800540BC2 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1DDDED7529F3EBD800540BC2 /* OpenAISwift */; };
 		1DDDED7929F3F06F00540BC2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDED7829F3F06F00540BC2 /* MainView.swift */; };
 		1DDDED7A29F3F06F00540BC2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDED7829F3F06F00540BC2 /* MainView.swift */; };
+		1DDDED7D29F3F89800540BC2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDED7C29F3F89800540BC2 /* String+Extensions.swift */; };
+		1DDDED7E29F3F89800540BC2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDDED7C29F3F89800540BC2 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		1DDDED6229F3E7F700540BC2 /* macOS_ChatGPTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOS_ChatGPTUITests.swift; sourceTree = "<group>"; };
 		1DDDED6429F3E7F700540BC2 /* macOS_ChatGPTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOS_ChatGPTUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1DDDED7829F3F06F00540BC2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1DDDED7C29F3F89800540BC2 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,9 +261,18 @@
 		1DDDED7729F3F02300540BC2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1DDDED7B29F3F86D00540BC2 /* Extensions */,
 				1DDDED7829F3F06F00540BC2 /* MainView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		1DDDED7B29F3F86D00540BC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1DDDED7C29F3F89800540BC2 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DDDED7D29F3F89800540BC2 /* String+Extensions.swift in Sources */,
 				1DDDED1B29F3E7D900540BC2 /* ContentView.swift in Sources */,
 				1DDDED7929F3F06F00540BC2 /* MainView.swift in Sources */,
 				1DDDED1929F3E7D900540BC2 /* iOS_ChatGPTApp.swift in Sources */,
@@ -519,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DDDED7E29F3F89800540BC2 /* String+Extensions.swift in Sources */,
 				1DDDED4929F3E7F600540BC2 /* ContentView.swift in Sources */,
 				1DDDED7A29F3F06F00540BC2 /* MainView.swift in Sources */,
 				1DDDED4729F3E7F600540BC2 /* macOS_ChatGPTApp.swift in Sources */,
