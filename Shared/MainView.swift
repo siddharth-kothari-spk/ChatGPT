@@ -9,22 +9,23 @@ import SwiftUI
 import OpenAISwift
 
 struct MainView: View {
-    @State private var chatQueryText: String = "k"
+    @State private var chatQueryText: String = ""
     // temp var
     @State private var answers: [String] = []
-    let openAI = OpenAISwift(authToken: "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")
+    let openAI = OpenAISwift(authToken: "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")
     
     private var isFormValid: Bool {
         !chatQueryText.isEmptyOrWhitespace
     }
     
     private func performSearch() {
-        openAI.sendCompletion(with: chatQueryText, maxTokens: 500) { result in
+        openAI.sendCompletion(with: chatQueryText) { result in
             switch result {
             case .success(let success):
                 print("success: \(success)")
+                
                 let answer = success.choices?.first?.text.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                guard !answer.isEmpty else {return}
+               // guard !answer.isEmpty else {return}
                 answers.append(answer)
             case .failure(let failure):
                 print("failure: \(failure)")
@@ -34,6 +35,11 @@ struct MainView: View {
     
     var body: some View {
         VStack {
+            
+            List(answers, id: \.self) { answer in
+                Text(answer).font(.title)
+            }
+            
             Spacer()
             HStack {
                 TextField("Search", text: $chatQueryText).textFieldStyle(.roundedBorder)
