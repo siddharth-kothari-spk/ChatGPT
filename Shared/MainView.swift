@@ -6,12 +6,26 @@
 //
 
 import SwiftUI
+import OpenAISwift
 
 struct MainView: View {
     @State private var chatQueryText: String = ""
     
+    let openAI = OpenAISwift(authToken: "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")
+    
     private var isFormValid: Bool {
         !chatQueryText.isEmptyOrWhitespace
+    }
+    
+    private func performSearch() {
+        openAI.sendCompletion(with: chatQueryText, maxTokens: 500) { result in
+            switch result {
+            case .success(let success):
+                print("success: \(success)")
+            case .failure(let failure):
+                print("failure: \(failure)")
+            }
+        }
     }
     
     var body: some View {
@@ -21,6 +35,7 @@ struct MainView: View {
                 TextField("Search", text: $chatQueryText).textFieldStyle(.roundedBorder)
                 Button {
                     // action
+                    performSearch()
                 } label: {
                     Image(systemName: "paperplane.circle.fill")
                         .font(.title)
