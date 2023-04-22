@@ -12,8 +12,20 @@ struct MainView: View {
     var body: some View {
         VStack {
             Spacer()
-            TextField("Search", text: $chatQueryText).textFieldStyle(.roundedBorder)
-        }
+            HStack {
+                TextField("Search", text: $chatQueryText).textFieldStyle(.roundedBorder)
+                Button {
+                    // action
+                } label: {
+                    Image(systemName: "paperplane.circle.fill")
+                        .font(.title)
+                        .rotationEffect(Angle(degrees: 45))
+                }.buttonStyle(.borderless)
+                    .tint(.blue)
+                // buttonStyle and tint for mac app
+
+            }
+        }.padding()
     }
 }
 
