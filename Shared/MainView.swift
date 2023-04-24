@@ -10,8 +10,8 @@ import OpenAISwift
 
 struct MainView: View {
     @State private var chatQueryText: String = ""
-    // temp var
-    @State private var answers: [String] = []
+    @EnvironmentObject private var model: Model
+    
     let openAI = OpenAISwift(authToken: Constants.openAIKey)
     
     private var isFormValid: Bool {
@@ -22,11 +22,25 @@ struct MainView: View {
         openAI.sendCompletion(with: chatQueryText) { result in
             switch result {
             case .success(let success):
-                print("success: \(success)")
+               // print("success: \(success)")
                 
                 let answer = success.choices?.first?.text.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
                 guard !answer.isEmpty else {return}
-                answers.append(answer)
+                
+                let query = QueryModel(question: chatQueryText, answer: answer)
+                // appending to QueryModel
+                DispatchQueue.main.async {
+                    model.queries.append(query)
+                }
+                
+                // saving in DB
+                do {
+                    try model.saveQuery(query)
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
+                chatQueryText = ""
             case .failure(let failure):
                 print("failure: \(failure)")
             }
@@ -35,9 +49,12 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            
-            List(answers, id: \.self) { answer in
-                Text(answer)
+            List(model.queries, id:\.id) { query in
+                VStack{
+                    Text(query.question)
+                        .fontWeight(.bold)
+                    Text(query.answer)
+                }
             }
             
             Spacer()
@@ -63,5 +80,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(Model())
     }
 }

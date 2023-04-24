@@ -99,6 +99,7 @@
 		1DDDED8729F4F35D00540BC2 /* QueryHistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QueryHistoryModel.xcdatamodel; sourceTree = "<group>"; };
 		1DDDED8B29F59F0100540BC2 /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
 		1DDDED8E29F59FD000540BC2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1DDDEEAA29F6EE5B00540BC2 /* iOS-ChatGPT-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iOS-ChatGPT-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +153,7 @@
 		1DDDED0A29F3E6AA00540BC2 = {
 			isa = PBXGroup;
 			children = (
+				1DDDEEAA29F6EE5B00540BC2 /* iOS-ChatGPT-Info.plist */,
 				1DDDED7729F3F02300540BC2 /* Shared */,
 				1DDDED7029F3E83F00540BC2 /* macOS */,
 				1DDDED6F29F3E82C00540BC2 /* iOS */,
@@ -697,7 +699,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "iOS-ChatGPT-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -773,7 +775,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "iOS-ChatGPT-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

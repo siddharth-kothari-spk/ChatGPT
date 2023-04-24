@@ -11,7 +11,9 @@ import SwiftUI
 struct iOS_ChatGPTApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView().environment(\.managedObjectContext, CoreDataManager.shared.persistentContainer.viewContext)
+            MainView()
+                .environmentObject(Model())
+                .environment(\.managedObjectContext, CoreDataManager.shared.persistentContainer.viewContext)
         }
     }
 }
