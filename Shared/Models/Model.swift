@@ -10,7 +10,7 @@ import Foundation
 class Model: ObservableObject {
     
     @Published var queries: [QueryModel] = []
-    
+    @Published var query = QueryModel(question: "", answer: "")
     func saveQuery(_ query: QueryModel) throws {
         let viewContext = CoreDataManager.shared.persistentContainer.viewContext
         let historyItem = HistoryItem(context: viewContext)
