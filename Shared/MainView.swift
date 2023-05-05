@@ -49,15 +49,32 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            List(model.queries, id:\.id) { query in
-                VStack(alignment: .leading) {
-                    Text(query.question)
-                        .fontWeight(.bold)
-                    Text(query.answer)
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.bottom], 10)
-                    .listRowSeparator(.hidden)
-            }.listStyle(.plain)
+            ScrollView { //
+                
+                // ScrollViewReader allow us to scroll to particular location
+                ScrollViewReader { proxy in
+                    ForEach(model.queries, id:\.id) { query in
+                        VStack(alignment: .leading) {
+                            Text(query.question)
+                                .fontWeight(.bold)
+                            Text(query.answer)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.bottom], 10)
+                            .id(query.id)
+                            .listRowSeparator(.hidden)
+                    }.listStyle(.plain)
+                        .onChange(of: model.query) { query in
+                            if !model.queries.isEmpty {
+                                let lastQuery = model.queries[model.queries.endIndex - 1]
+                                withAnimation {
+                                    proxy.scrollTo(lastQuery.id)
+                                }
+                            }
+                        }
+                }
+                
+                
+            }.padding()
             
             Spacer()
             HStack {
