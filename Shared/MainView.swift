@@ -19,7 +19,7 @@ struct MainView: View {
     }
     
     private func performSearch() {
-        openAI.sendCompletion(with: chatQueryText) { result in
+        openAI.sendCompletion(with: chatQueryText, maxTokens: 500) { result in
             switch result {
             case .success(let success):
                // print("success: \(success)")

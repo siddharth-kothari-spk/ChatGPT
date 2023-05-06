@@ -18,10 +18,13 @@ struct HistoryView: View {
     var body: some View {
         List(historyItemResults) { historyItem in
             Text(historyItem.question ?? "")
-                .frame(maxWidth: .infinity, alignment:.leading).contentShape(Rectangle())
+                .frame(maxWidth: .infinity, alignment:.leading)
+                .contentShape(Rectangle())
                 .onTapGesture {
                     model.query = QueryModel(question: historyItem.question ?? "", answer: historyItem.answer ?? "")
-                    dismiss()
+                    #if os(iOS)
+                        dismiss()
+                    #endif
                 }
         }
     }
