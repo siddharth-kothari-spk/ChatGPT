@@ -11,6 +11,7 @@ import OpenAISwift
 struct MainView: View {
     @State private var chatQueryText: String = ""
     @EnvironmentObject private var model: Model
+    @State private var isSearching: Bool = false
     
     let openAI = OpenAISwift(authToken: Constants.openAIKey)
     
@@ -41,7 +42,10 @@ struct MainView: View {
                     print(error.localizedDescription)
                 }
                 chatQueryText = ""
+                isSearching = false
+                
             case .failure(let failure):
+                isSearching = false
                 print("failure: \(failure)")
             }
         }
@@ -81,6 +85,7 @@ struct MainView: View {
                 TextField("Search", text: $chatQueryText).textFieldStyle(.roundedBorder)
                 Button {
                     // action
+                    isSearching = true
                     performSearch()
                 } label: {
                     Image(systemName: "paperplane.circle.fill")
@@ -95,6 +100,11 @@ struct MainView: View {
         }.padding()
             .onChange(of: model.query) { query in
                 model.queries.append(query)
+            }
+            .overlay(alignment: .center) {
+                if isSearching {
+                    ProgressView("Searching...")
+                }
             }
     }
 }
